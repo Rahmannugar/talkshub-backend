@@ -8,7 +8,7 @@ import morgan from "morgan";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
-import authRoutes from "./routes/auth.js";
+import authRoutes  from "./routes/auth.js";
 import { register } from "./controllers/auth.js";
 
 //configurations
