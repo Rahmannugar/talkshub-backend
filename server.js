@@ -8,6 +8,7 @@ import morgan from "morgan";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
+import { register } from "./controllers/auth.js";
 
 //configurations
 const __filename = fileURLToPath(import.meta.url);
@@ -33,6 +34,9 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
+
+//routes with files
+app.post("/auth/register", upload.single("picture"), register);
 
 //mongoDB connection
 const port = process.env.PORT || 5000;
