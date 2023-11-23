@@ -8,6 +8,7 @@ import morgan from "morgan";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
+import authRoutes from "./routes/auth.js"
 import { register } from "./controllers/auth.js";
 
 //configurations
@@ -44,8 +45,12 @@ const mongoURL = process.env.mongo_URL;
 mongoose
   .connect(mongoURL)
   .then(() => {
-    app.listen(() => {
+    app.listen(port, () => {
       console.log(`Listening on port ${port}`);
     });
   })
   .catch((err) => console.log(`${err}, could not connect`));
+
+app.get("/", (req, res) => {
+  res.status(200).send("Hello 33.");
+});
