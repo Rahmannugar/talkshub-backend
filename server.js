@@ -8,7 +8,8 @@ import morgan from "morgan";
 import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
-import authRoutes  from "./routes/auth.js";
+import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
 import { register } from "./controllers/auth.js";
 
 //configurations
@@ -41,6 +42,7 @@ app.post("/auth/register", upload.single("picture"), register);
 
 //routes
 app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
 
 //mongoDB connection
 const port = process.env.PORT || 5000;
